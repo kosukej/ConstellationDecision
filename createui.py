@@ -15,7 +15,7 @@ def accept_action(month: ttk.Combobox, day: ttk.Combobox):
     except ValueError:
         print("ValueError: accept_action()")
         create_modal_dialog("エラー", "正しい値を入力してください")
-
+        return
     result = constell.get_constellation(input_birth)
     formatted_date = (month.get() + "月" + day.get() + "日")
     create_modal_dialog("結果", (formatted_date + "の星座は" + result + "です"))
@@ -63,7 +63,6 @@ def create_modal_dialog(title: str, text: str):
 
     modal.grab_set()
     modal.focus_set()
-    modal.transient()
 
     text_label = ttk.Label(modal, text=text)
     close_button = ttk.Button(modal, text="閉じる", command=modal.destroy)
