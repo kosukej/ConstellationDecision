@@ -1,9 +1,11 @@
 import enum
 from datetime import date
 
+# 閏年に対応させるため閏年を指定
 default_year = 2004
 
 
+# 星座の列挙
 class ConstellationType(enum.Enum):
     CAPRICORN2 = ("♑山羊座", date(default_year, 1, 1), date(default_year, 1, 19))
     AQUARIUS = ("♒水瓶座", date(default_year, 1, 20), date(default_year, 2, 18))
@@ -19,13 +21,18 @@ class ConstellationType(enum.Enum):
     SAGITTARIUS = ("♐射手座", date(default_year, 11, 22), date(default_year, 12, 21))
     CAPRICORN = ("♑山羊座", date(default_year, 12, 22), date(default_year, 12, 31))
 
+    # 星座の列挙型のコンストラクタ(要素の変数化)
     def __init__(self, jp_name: str, start_date: date, end_date: date):
         self.jp_name = jp_name
         self.start_date = start_date
         self.end_date = end_date
 
 
+# 引数で指定された日付がどの星座に属するかの日本語名を返答する関数
 def get_constellation(day: date):
+    # 星座の列挙型の要素を取得
     for constellation in ConstellationType:
+        # 星座の列挙型の要素のstart_dateとend_dateの間にdayがあるか確認
         if constellation.start_date <= day <= constellation.end_date:
+            # 星座の列挙型の要素のjp_nameを返答
             return constellation.jp_name
