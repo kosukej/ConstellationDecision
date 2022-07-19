@@ -2,6 +2,9 @@
 # 基本的なプログラムができて3C(60点)平均点です。
 # 提出方式はzipファイルのみです。
 
+# GitHubRepository:
+# https://github.com/kosukej/ConstellationDecision
+
 import createui
 
 
